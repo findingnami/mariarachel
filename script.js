@@ -103,3 +103,120 @@ const statsObserver = new IntersectionObserver(
 
 const statsEl = document.querySelector('.about-stats');
 if (statsEl) statsObserver.observe(statsEl);
+
+// ===== Extended scroll reveal =====
+document.querySelectorAll('.section .label, .section .heading').forEach(el => {
+  el.setAttribute('data-reveal', '');
+  revealObserver.observe(el);
+});
+
+document.querySelectorAll('.about-body p').forEach((el, i) => {
+  el.setAttribute('data-reveal', '');
+  el.setAttribute('data-delay', String(i + 1));
+  revealObserver.observe(el);
+});
+
+document.querySelectorAll('.edu-col-title').forEach(el => {
+  el.setAttribute('data-reveal', '');
+  revealObserver.observe(el);
+});
+
+const contactLeft = document.querySelector('.contact-left');
+const contactRight = document.querySelector('.contact-right');
+if (contactLeft) { contactLeft.setAttribute('data-reveal', ''); revealObserver.observe(contactLeft); }
+if (contactRight) { contactRight.setAttribute('data-reveal', ''); contactRight.setAttribute('data-delay', '2'); revealObserver.observe(contactRight); }
+
+// ===== Sparkles + background glow trail =====
+const ORANGE = '#e07e4a';
+const GREEN  = '#97a069';
+const CHARS  = ['✦', '✧', '⋆', '✸', '★'];
+let lastSpawn = 0, lastMX = 0, lastMY = 0;
+
+function spawnSparkle(x, y) {
+  const el = document.createElement('span');
+  el.className = 'sparkle';
+  el.textContent = CHARS[Math.floor(Math.random() * CHARS.length)];
+  el.style.color    = Math.random() < 0.5 ? ORANGE : GREEN;
+  el.style.left     = (x + (Math.random() - 0.5) * 22) + 'px';
+  el.style.top      = (y + (Math.random() - 0.5) * 22) + 'px';
+  el.style.fontSize = (10 + Math.random() * 11) + 'px';
+  document.body.appendChild(el);
+  el.addEventListener('animationend', () => el.remove());
+}
+
+const bgCanvas = document.getElementById('bgCanvas');
+const bgCtx    = bgCanvas.getContext('2d');
+let cW = 0, cH = 0;
+
+function resizeBgCanvas() {
+  cW = bgCanvas.width  = window.innerWidth;
+  cH = bgCanvas.height = window.innerHeight;
+  bgCtx.fillStyle = '#ffffff';
+  bgCtx.fillRect(0, 0, cW, cH);
+}
+resizeBgCanvas();
+window.addEventListener('resize', resizeBgCanvas, { passive: true });
+
+let trailHue = Math.random() * 360;
+
+// Decay loop — gently bleaches the canvas toward white each frame
+(function renderGlow() {
+  bgCtx.globalAlpha = 0.038;
+  bgCtx.fillStyle = '#ffffff';
+  bgCtx.fillRect(0, 0, cW, cH);
+  bgCtx.globalAlpha = 1;
+  requestAnimationFrame(renderGlow);
+})();
+
+document.addEventListener('mousemove', e => {
+  // Paint a soft radial glow blob directly — no strokes, no hard edges
+  trailHue = (trailHue + 1.5) % 360;
+  const r = 48;
+  const grd = bgCtx.createRadialGradient(e.clientX, e.clientY, 0, e.clientX, e.clientY, r);
+  grd.addColorStop(0,   `hsla(${trailHue}, 40%, 72%, 0.14)`);
+  grd.addColorStop(0.5, `hsla(${trailHue}, 40%, 72%, 0.06)`);
+  grd.addColorStop(1,   `hsla(${trailHue}, 40%, 72%, 0)`);
+  bgCtx.fillStyle = grd;
+  bgCtx.beginPath();
+  bgCtx.arc(e.clientX, e.clientY, r, 0, Math.PI * 2);
+  bgCtx.fill();
+
+  const now = Date.now();
+  const dx = e.clientX - lastMX;
+  const dy = e.clientY - lastMY;
+  if (now - lastSpawn > 55 && dx * dx + dy * dy > 64) {
+    spawnSparkle(e.clientX, e.clientY);
+    lastSpawn = now;
+    lastMX = e.clientX;
+    lastMY = e.clientY;
+  }
+}, { passive: true });
+
+// ===== Project card 3D tilt + pointer glow =====
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    const cx = r.width / 2, cy = r.height / 2;
+    const rotX = ((y - cy) / cy) * -4;
+    const rotY = ((x - cx) / cx) * 5;
+    card.style.transform = `translateY(-6px) perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    card.style.setProperty('--gx', `${(x / r.width) * 100}%`);
+    card.style.setProperty('--gy', `${(y / r.height) * 100}%`);
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+// ===== Hero photo parallax =====
+const heroPhoto = document.querySelector('.hero-photo');
+if (heroPhoto) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < window.innerHeight) {
+      heroPhoto.style.transform = `translateY(${y * 0.1}px)`;
+    }
+  }, { passive: true });
+}

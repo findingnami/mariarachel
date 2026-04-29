@@ -499,6 +499,7 @@ button { cursor: pointer; border: none; background: none; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+  perspective: 1200px;
 }
 
 .project-card {
@@ -508,8 +509,20 @@ button { cursor: pointer; border: none; background: none; }
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  position: relative;
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(220px circle at var(--gx, 50%) var(--gy, 50%), rgba(193,123,90,0.08), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  z-index: 2;
+}
+.project-card:hover::before { opacity: 1; }
 .project-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 16px 48px rgba(0,0,0,0.09);
@@ -798,6 +811,57 @@ a.contact-row:hover { padding-left: 8px; }
 [data-reveal][data-delay="1"] { transition-delay: 0.1s; }
 [data-reveal][data-delay="2"] { transition-delay: 0.18s; }
 [data-reveal][data-delay="3"] { transition-delay: 0.26s; }
+
+/* Hero entrance */
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-eyebrow     { animation: heroIn 0.7s var(--ease) 0.05s both; }
+.hero-name        { animation: heroIn 0.85s var(--ease) 0.2s  both; }
+.hero-tagline     { animation: heroIn 0.7s var(--ease) 0.38s both; }
+.hero-actions     { animation: heroIn 0.7s var(--ease) 0.52s both; }
+.hero-socials     { animation: heroIn 0.65s var(--ease) 0.64s both; }
+.hero-photo       { animation: heroIn 0.95s var(--ease) 0.28s both; }
+.hero-scroll-hint { animation: heroIn 0.7s var(--ease) 0.88s both; }
+
+
+/* =====================
+   SPARKLES + BG GLOW
+   ===================== */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  line-height: 1;
+  transform: translate(-50%, -50%) scale(0) rotate(0deg);
+  animation: sparklePop 0.65s ease-out forwards;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+@keyframes sparklePop {
+  0%   { transform: translate(-50%, -50%) scale(0)   rotate(0deg);   opacity: 1; }
+  40%  { transform: translate(-50%, -50%) scale(1.4) rotate(55deg);  opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(0)   rotate(110deg); opacity: 0; }
+}
+
+#bgCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9996;
+  mix-blend-mode: multiply;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-eyebrow, .hero-name, .hero-tagline,
+  .hero-actions, .hero-socials, .hero-photo, .hero-scroll-hint {
+    animation: none;
+  }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
 
 
 /* =====================
