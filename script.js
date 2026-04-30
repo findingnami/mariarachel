@@ -158,28 +158,30 @@ resizeBgCanvas();
 window.addEventListener('resize', resizeBgCanvas, { passive: true });
 
 let trailHue = Math.random() * 360;
+let glowX = -1, glowY = -1;
 
-// Decay loop — gently bleaches the canvas toward white each frame
+// Render loop — clears canvas each frame and redraws glow only at current pointer position
 (function renderGlow() {
-  bgCtx.globalAlpha = 0.038;
   bgCtx.fillStyle = '#ffffff';
   bgCtx.fillRect(0, 0, cW, cH);
-  bgCtx.globalAlpha = 1;
+  if (glowX >= 0) {
+    const r = 48;
+    const grd = bgCtx.createRadialGradient(glowX, glowY, 0, glowX, glowY, r);
+    grd.addColorStop(0,   `hsla(${trailHue}, 40%, 72%, 0.14)`);
+    grd.addColorStop(0.5, `hsla(${trailHue}, 40%, 72%, 0.06)`);
+    grd.addColorStop(1,   `hsla(${trailHue}, 40%, 72%, 0)`);
+    bgCtx.fillStyle = grd;
+    bgCtx.beginPath();
+    bgCtx.arc(glowX, glowY, r, 0, Math.PI * 2);
+    bgCtx.fill();
+  }
   requestAnimationFrame(renderGlow);
 })();
 
 document.addEventListener('mousemove', e => {
-  // Paint a soft radial glow blob directly — no strokes, no hard edges
   trailHue = (trailHue + 1.5) % 360;
-  const r = 48;
-  const grd = bgCtx.createRadialGradient(e.clientX, e.clientY, 0, e.clientX, e.clientY, r);
-  grd.addColorStop(0,   `hsla(${trailHue}, 40%, 72%, 0.14)`);
-  grd.addColorStop(0.5, `hsla(${trailHue}, 40%, 72%, 0.06)`);
-  grd.addColorStop(1,   `hsla(${trailHue}, 40%, 72%, 0)`);
-  bgCtx.fillStyle = grd;
-  bgCtx.beginPath();
-  bgCtx.arc(e.clientX, e.clientY, r, 0, Math.PI * 2);
-  bgCtx.fill();
+  glowX = e.clientX;
+  glowY = e.clientY;
 
   const now = Date.now();
   const dx = e.clientX - lastMX;
