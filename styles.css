@@ -101,7 +101,7 @@ button { cursor: pointer; border: none; background: none; }
   color: var(--ink);
   border: 1.5px solid var(--ink);
 }
-.btn-outline:hover { background: var(--ink); color: var(--white); }
+.btn-outline:hover { background: var(--accent); color: var(--white); }
 
 
 /* =====================
@@ -353,9 +353,15 @@ button { cursor: pointer; border: none; background: none; }
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 320px;
-  gap: clamp(48px, 8vw, 96px);
+  grid-template-areas:
+    "heading photo"
+    "body    photo";
+  gap: 0 clamp(48px, 8vw, 96px);
   align-items: start;
 }
+.about-heading { grid-area: heading; }
+.about-body    { grid-area: body; }
+.about-photo   { grid-area: photo; }
 
 .about-body p {
   font-size: 1rem;
@@ -921,9 +927,13 @@ a.contact-row:hover { padding-left: 8px; }
 
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    grid-template-areas:
+      "heading"
+      "photo"
+      "body";
+    gap: 32px;
   }
-  .about-photo { display: none; }
+  .about-heading .heading { margin-bottom: 0; }
   .about-stats { gap: 28px; }
 
   .skills-grid {
