@@ -929,8 +929,8 @@ a.contact-row:hover { padding-left: 8px; }
     grid-template-columns: 1fr;
     grid-template-areas:
       "heading"
-      "photo"
-      "body";
+      "body"
+      "photo";
     gap: 32px;
   }
   .about-heading .heading { margin-bottom: 0; }
