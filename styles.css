@@ -1379,7 +1379,7 @@ button:focus-visible,
   .contact-social a, .footer-inner p, .footer-links a, .label--light { color: #000 !important; }
 
   .project-card, .cs-section, .cs-figure, .cs-fact, .cs-list-item, .timeline-item,
-  .skill-group, .edu-item, .cs-table-wrap, .cs-layer, .cs-flow li {
+  .skill-group, .edu-item, .cs-table-wrap, .cs-layer, .cs-flow li, .cs-steps li, .cs-lens, .cs-check {
     break-inside: avoid; page-break-inside: avoid;
   }
   h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
