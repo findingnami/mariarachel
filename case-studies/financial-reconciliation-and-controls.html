@@ -53,10 +53,10 @@
         <h1 class="cs-title">Financial Reconciliation &amp; Controls</h1>
         <p class="cs-summary">Ongoing reconciliation of vendor commissions against contracts, vendor statements, and payment records, resulting in $4,809.80 recovered from identified errors.</p>
         <dl class="cs-facts">
-        <div class="cs-fact"><dt>Focus area</dt><dd>Financial reconciliation</dd></div>
-        <div class="cs-fact"><dt>Context</dt><dd>21 vendors, 22 clients, and 85 contract records at a technology advisory firm</dd></div>
-        <div class="cs-fact"><dt>Tools</dt><dd>Contracts · Vendor statements · Payment records · Internal applications</dd></div>
-        <div class="cs-fact"><dt>Role</dt><dd>Operations Intelligence Manager</dd></div>
+          <div class="cs-fact"><dt>Focus</dt><dd>Financial accuracy</dd></div>
+          <div class="cs-fact"><dt>Context</dt><dd>21 vendors, 22 clients, 85 contract records</dd></div>
+          <div class="cs-fact"><dt>Tools</dt><dd>Commission tracking system (Supabase, Vercel)</dd></div>
+          <div class="cs-fact"><dt>Role</dt><dd>Operations Intelligence Manager</dd></div>
         </dl>
       </div>
     </header>
@@ -71,64 +71,76 @@
 
         <section class="cs-section" aria-labelledby="h-risk">
           <h2 id="h-risk">Risk &amp; objective</h2>
-          <p>Commissions are calculated from contract terms and paid by vendors on their own schedules. Calculation errors, missing or delayed payments, and gaps in supporting documents can go unnoticed without a regular check. The objective was to confirm that what was owed matches what was reported and what was paid, and to follow up on anything that does not.</p>
+          <p>Commissions are calculated from contract terms and paid by vendors on their own schedules. Calculation errors, missing or delayed payments, and gaps in supporting documents can go unnoticed without a regular check. The objective is to confirm that what is owed matches what was reported and what was paid, and to follow up on anything that does not.</p>
         </section>
 
-        <section class="cs-section" aria-labelledby="h-did">
-          <h2 id="h-did">What I did</h2>
-          <ul class="tl-list">
-              <li>Verified commission calculations against contractual terms, vendor statements, and payment records.</li>
-              <li>Investigated discrepancies, including missing or delayed payments and documentation gaps.</li>
-              <li>Followed up with vendors on commission items totaling $68,481.48.</li>
-              <li>Verified supporting documents for each identified error.</li>
-              <li>Recovered $4,809.80 from identified vendor commission errors.</li>
-          </ul>
+        <section class="cs-section" aria-labelledby="h-approach">
+          <h2 id="h-approach">Approach</h2>
+          <ol class="cs-steps">
+            <li><strong>Gather the three sources.</strong> For each commission, collect the contract terms, the vendor&#x27;s statement, and the payment record.</li>
+            <li><strong>Work out what is owed.</strong> Calculate the expected commission from the contract terms.</li>
+            <li><strong>Compare to the vendor statement.</strong> Check that the vendor reported the amount that the contract implies.</li>
+            <li><strong>Compare to the payment record.</strong> Check that the amount paid matches what was reported and is not missing or late.</li>
+            <li><strong>Classify each exception.</strong> Calculation error, missing payment, delayed payment, or documentation gap.</li>
+            <li><strong>Investigate and verify.</strong> Trace each exception to its cause and confirm it against supporting documents.</li>
+            <li><strong>Follow up with vendors.</strong> Raise each item with the vendor and track it until it is resolved. Commission items totaling $68,481.48 have been under follow-up.</li>
+            <li><strong>Record the outcome.</strong> Note what was found, what was recovered, and what remains open. $4,809.80 has been recovered from identified vendor commission errors.</li>
+          </ol>
         </section>
 
         <section class="cs-section" aria-labelledby="h-controls">
-          <h2 id="h-controls">Controls in place</h2>
-          <ul class="tag-list">
-              <li>Three-way comparison (contract, statement, payment)</li>
-              <li>Supporting-document verification</li>
-              <li>Vendor follow-up</li>
-              <li>Activity logs and approval workflows in the internal applications</li>
-          </ul>
+          <h2 id="h-controls">Controls</h2>
+          <div class="cs-table-wrap" role="region" aria-label="Controls, the risk each addresses, and the evidence" tabindex="0">
+            <table class="cs-table">
+              <thead><tr><th scope="col">Control</th><th scope="col">Risk it addresses</th><th scope="col">Evidence</th></tr></thead>
+              <tbody>
+              <tr><th scope="row">Three-way comparison (contract, statement, payment)</th><td>Commissions that are wrong, unreported, or unpaid</td><td>Matched or flagged record per commission</td></tr>
+              <tr><th scope="row">Supporting-document verification</th><td>Adjustments made without proof</td><td>Documents tied to each exception</td></tr>
+              <tr><th scope="row">Exception follow-up with vendors</th><td>Items left open indefinitely</td><td>Follow-up record for each open item</td></tr>
+              <tr><th scope="row">Approval workflows and activity logs in the internal applications</th><td>Unreviewed or untraceable changes to records</td><td>Approval history and action logs</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="cs-section" aria-labelledby="h-art">
+          <h2 id="h-art">Reconciliation worksheet</h2>
+          <figure class="cs-figure">
+            <span class="cs-illus">Illustrative — fictional sample data</span>
+          <div class="cs-table-wrap" role="region" aria-label="Illustrative reconciliation worksheet" tabindex="0">
+            <table class="cs-table">
+              <thead><tr><th scope="col">Vendor</th><th scope="col">Expected (contract)</th><th scope="col">Reported (statement)</th><th scope="col">Paid</th><th scope="col">Variance</th><th scope="col">Exception type</th><th scope="col">Status</th></tr></thead>
+              <tbody>
+              <tr><th scope="row">Vendor A</th><td>100</td><td>100</td><td>100</td><td>0</td><td>None</td><td>Matched</td></tr>
+              <tr><th scope="row">Vendor B</th><td>250</td><td>225</td><td>225</td><td>25</td><td>Calculation error</td><td>Follow up</td></tr>
+              <tr><th scope="row">Vendor C</th><td>180</td><td>180</td><td>0</td><td>180</td><td>Missing payment</td><td>Follow up</td></tr>
+              <tr><th scope="row">Vendor D</th><td>90</td><td>90</td><td>90</td><td>0</td><td>Delayed payment</td><td>Closed</td></tr>
+              </tbody>
+            </table>
+          </div>
+            <figcaption>Amounts are fictional units chosen only to show how exceptions are classified.</figcaption>
+          </figure>
         </section>
 
         <section class="cs-section" aria-labelledby="h-result">
           <h2 id="h-result">Result</h2>
-          <p>$4,809.80 recovered from vendor commission errors, and a repeatable reconciliation process with documented follow-up on open items.</p>
+          <p>$4,809.80 recovered from identified vendor commission errors, and an ongoing reconciliation process in which every exception is classified, evidenced, and followed up.</p>
         </section>
 
-        <section class="cs-section" aria-labelledby="h-shows">
-          <h2 id="h-shows">What this shows</h2>
-          <p>I can compare independent sources, investigate exceptions to their cause, and resolve them with evidence. This is the core of substantive testing and of financial control work.</p>
+        <section class="cs-section cs-lens" aria-labelledby="h-lens">
+          <h2 id="h-lens">Through an audit lens</h2>
+          <p>This is substantive testing in practice: recalculating from source terms, comparing independent records, and tracing exceptions to evidence. It also covers the two questions an auditor asks of any financial record: is it accurate, and is it complete? I know how to prove each answer with documents and how to keep the audit trail clean.</p>
         </section>
-
-        <figure class="cs-figure">
-          <span class="cs-illus">Illustrative — fictional sample data</span>
-        <div class="cs-table-wrap" role="region" aria-label="Illustrative reconciliation table" tabindex="0">
-          <table class="cs-table">
-            <thead><tr><th scope="col">Vendor</th><th scope="col">Contract amount</th><th scope="col">Reported</th><th scope="col">Paid</th><th scope="col">Variance</th><th scope="col">Status</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Vendor A</th><td>$1,200</td><td>$1,200</td><td>$1,200</td><td>$0</td><td>Matched</td></tr>
-              <tr><th scope="row">Vendor B</th><td>$3,000</td><td>$2,700</td><td>$2,700</td><td>$300</td><td>Variance — follow up</td></tr>
-              <tr><th scope="row">Vendor C</th><td>$1,500</td><td>$1,500</td><td>$0</td><td>$1,500</td><td>Payment pending</td></tr>
-            </tbody>
-          </table>
-        </div>
-          <figcaption>A three-way comparison of contract amount, reported amount, and amount paid, with each item given a status for follow-up.</figcaption>
-        </figure>
 
         <section class="cs-section" aria-labelledby="h-skills">
           <h2 id="h-skills">Skills demonstrated</h2>
           <ul class="tag-list">
-              <li>Financial Reconciliation</li>
-              <li>Discrepancy Investigation</li>
-              <li>Vendor Follow-up</li>
-              <li>Supporting-Document Verification</li>
-              <li>Substantive Testing</li>
-              <li>Documentation</li>
+            <li>Financial Reconciliation</li>
+            <li>Discrepancy Investigation</li>
+            <li>Evidence Verification</li>
+            <li>Vendor Management</li>
+            <li>Excel</li>
+            <li>SQL</li>
           </ul>
         </section>
 

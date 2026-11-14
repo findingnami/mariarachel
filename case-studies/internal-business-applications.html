@@ -53,10 +53,10 @@
         <h1 class="cs-title">Internal Business Applications</h1>
         <p class="cs-summary">Designed and built four internal applications (commission tracking, project management, CRM, and a vendor marketplace) with access and workflow safeguards built in.</p>
         <dl class="cs-facts">
-        <div class="cs-fact"><dt>Focus area</dt><dd>Application design and built-in controls</dd></div>
-        <div class="cs-fact"><dt>Context</dt><dd>Four internal business applications at a technology advisory firm</dd></div>
-        <div class="cs-fact"><dt>Tools</dt><dd>Supabase · Vercel · GitHub</dd></div>
-        <div class="cs-fact"><dt>Role</dt><dd>Operations Intelligence Manager</dd></div>
+          <div class="cs-fact"><dt>Focus</dt><dd>Application controls</dd></div>
+          <div class="cs-fact"><dt>Context</dt><dd>Four internal business applications</dd></div>
+          <div class="cs-fact"><dt>Tools</dt><dd>Supabase, Vercel, GitHub, SQL</dd></div>
+          <div class="cs-fact"><dt>Role</dt><dd>Operations Intelligence Manager</dd></div>
         </dl>
       </div>
     </header>
@@ -66,35 +66,70 @@
 
         <section class="cs-section" aria-labelledby="h-overview">
           <h2 id="h-overview">Overview</h2>
-          <p>I designed and developed four internal business applications for a technology advisory firm: commission tracking, project management, CRM, and a vendor marketplace platform. They are built with Supabase and Vercel, and I used GitHub for version control.</p>
+          <p>I designed and developed four internal business applications for a technology advisory firm: commission tracking, project management, CRM, and a vendor marketplace platform. They are built with Supabase and Vercel, and I use GitHub for version control.</p>
         </section>
 
         <section class="cs-section" aria-labelledby="h-risk">
           <h2 id="h-risk">Risk &amp; objective</h2>
-          <p>Manual spreadsheet workflows are hard to control. They have no access limits, no change history, and no consistent way to check calculations or payment status. The objective was to move these workflows into applications that have the controls built in.</p>
+          <p>Manual spreadsheet workflows are hard to control. There are no limits on who can see or change data, no change history, and no consistent way to check calculations or payment status. The objective was to move these workflows into applications that have the controls built in.</p>
         </section>
 
-        <section class="cs-section" aria-labelledby="h-did">
-          <h2 id="h-did">What I did</h2>
-          <ul class="tl-list">
-              <li>Designed and built the commission tracking system to automate commission tracking, variance calculations, and payment status monitoring across contracts, clients, and vendors, replacing manual spreadsheet workflows.</li>
-              <li>Built a project management application, a CRM, and a vendor marketplace platform.</li>
-              <li>Built the applications on Supabase and Vercel.</li>
-              <li>Implemented role-based access, approval workflows, activity logs, two-factor authentication, and data restrictions across the applications.</li>
-              <li>Used GitHub version control to track changes to the code.</li>
-          </ul>
+        <section class="cs-section" aria-labelledby="h-approach">
+          <h2 id="h-approach">Approach</h2>
+          <ol class="cs-steps">
+            <li><strong>Understand the workflow.</strong> Gather requirements from the people who do the work, and identify where manual steps cause errors or lack visibility.</li>
+            <li><strong>Design the application.</strong> Define the data, the roles, and the approvals that the workflow needs.</li>
+            <li><strong>Build on Supabase and Vercel.</strong> Develop the application with a database behind it and deploy it to the web.</li>
+            <li><strong>Build in controls.</strong> Add role-based access, approval workflows, activity logs, two-factor authentication, and data restrictions.</li>
+            <li><strong>Manage change.</strong> Keep the code in GitHub so that changes are tracked and can be reviewed.</li>
+            <li><strong>Review and improve.</strong> Review access and activity across the applications and adjust as the workflows change.</li>
+          </ol>
         </section>
 
         <section class="cs-section" aria-labelledby="h-controls">
-          <h2 id="h-controls">Controls in place</h2>
-          <ul class="tag-list">
-              <li>Role-based access</li>
-              <li>Approval workflows</li>
-              <li>Activity logs</li>
-              <li>Two-factor authentication</li>
-              <li>Data restrictions</li>
-              <li>Version control</li>
-          </ul>
+          <h2 id="h-controls">Controls</h2>
+          <div class="cs-table-wrap" role="region" aria-label="Controls, the risk each addresses, and the evidence" tabindex="0">
+            <table class="cs-table">
+              <thead><tr><th scope="col">Control</th><th scope="col">Risk it addresses</th><th scope="col">Evidence</th></tr></thead>
+              <tbody>
+              <tr><th scope="row">Role-based access and data restrictions</th><td>Users seeing or changing data beyond their role</td><td>Roles and restrictions defined in each application</td></tr>
+              <tr><th scope="row">Approval workflows</th><td>Changes made without review</td><td>Approval history</td></tr>
+              <tr><th scope="row">Activity logs</th><td>Changes that cannot be traced</td><td>Log of user actions</td></tr>
+              <tr><th scope="row">Two-factor authentication</th><td>Account compromise</td><td>Two-factor sign-in enabled</td></tr>
+              <tr><th scope="row">Version control (GitHub)</th><td>Untracked or unreviewed changes to the code</td><td>Commit history</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="cs-section" aria-labelledby="h-art">
+          <h2 id="h-art">Application overview</h2>
+          <figure class="cs-figure">
+            <span class="cs-illus">Illustrative — simplified architecture</span>
+          <div class="cs-arch" role="group" aria-label="Illustrative layered architecture: users by role, four applications, Supabase and Vercel, with GitHub alongside">
+            <div class="cs-arch-stack">
+              <div class="cs-layer"><h3>Users</h3><ul><li>By role</li></ul></div>
+              <div class="cs-down" aria-hidden="true">↓</div>
+              <div class="cs-layer"><h3>Applications</h3><ul><li>Commission tracking</li><li>Project management</li><li>CRM</li><li>Vendor marketplace</li></ul></div>
+              <div class="cs-down" aria-hidden="true">↓</div>
+              <div class="cs-layer"><h3>Platform</h3><ul><li>Supabase (data)</li><li>Vercel (hosting)</li></ul></div>
+            </div>
+            <div class="cs-layer cs-layer--side"><h3>Alongside</h3><ul><li>GitHub (version control)</li></ul></div>
+          </div>
+          <div class="cs-layer cs-layer--controls"><h3>Controls across the layers</h3><ul><li>Role-based access</li><li>Approvals</li><li>Activity logs</li><li>Two-factor authentication</li><li>Data restrictions</li></ul></div>
+          <div class="cs-table-wrap" role="region" aria-label="Illustrative applications table" tabindex="0">
+            <table class="cs-table">
+              <thead><tr><th scope="col">Application</th><th scope="col">What it does</th></tr></thead>
+              <tbody>
+              <tr><th scope="row">Commission tracking</th><td>Tracks commissions, variances, and payment status across contracts, clients, and vendors, replacing manual spreadsheet workflows</td></tr>
+              <tr><th scope="row">Project management</th><td>Manages internal project work</td></tr>
+              <tr><th scope="row">CRM</th><td>Manages client and vendor relationships</td></tr>
+              <tr><th scope="row">Vendor marketplace</th><td>Platform for working with vendors</td></tr>
+              </tbody>
+            </table>
+          </div>
+            <figcaption>A simplified view of how users, applications, and the platform fit together, with the controls that apply across them.</figcaption>
+          </figure>
         </section>
 
         <section class="cs-section" aria-labelledby="h-result">
@@ -102,36 +137,20 @@
           <p>Four internal business applications with access and workflow controls built in, including a commission tracking system that replaces manual spreadsheet workflows.</p>
         </section>
 
-        <section class="cs-section" aria-labelledby="h-shows">
-          <h2 id="h-shows">What this shows</h2>
-          <p>I understand how business systems are designed, built, deployed, and changed, and I build controls into them. This is the knowledge IS auditors use when assessing application controls and change management.</p>
+        <section class="cs-section cs-lens" aria-labelledby="h-lens">
+          <h2 id="h-lens">Through an audit lens</h2>
+          <p>IS auditors assess how applications are designed, how they restrict access, how data is processed, and how changes are made. Having built these systems, I understand the choices behind each of those areas and where weaknesses usually appear. That helps me ask better questions and recognize good answers.</p>
         </section>
-
-        <figure class="cs-figure">
-          <span class="cs-illus">Illustrative — simplified architecture</span>
-        <div class="cs-arch" role="group" aria-label="Illustrative layered architecture: users, applications, platform, with version control alongside">
-          <div class="cs-arch-stack">
-            <div class="cs-layer"><h3>Users</h3><ul><li>Roles</li></ul></div>
-            <div class="cs-down" aria-hidden="true">↓</div>
-            <div class="cs-layer"><h3>Applications</h3><ul><li>Commission</li><li>Projects</li><li>CRM</li><li>Vendor Marketplace</li></ul></div>
-            <div class="cs-down" aria-hidden="true">↓</div>
-            <div class="cs-layer"><h3>Platform</h3><ul><li>Supabase</li><li>Vercel</li></ul></div>
-          </div>
-          <div class="cs-layer cs-layer--side"><h3>Alongside</h3><ul><li>GitHub</li></ul><p class="sr-only">Version control</p></div>
-        </div>
-          <figcaption>A simplified view of how users, applications, and the platform layers fit together, with version control alongside.</figcaption>
-        </figure>
 
         <section class="cs-section" aria-labelledby="h-skills">
           <h2 id="h-skills">Skills demonstrated</h2>
           <ul class="tag-list">
-              <li>Application Design</li>
-              <li>Application Controls</li>
-              <li>Change Management</li>
-              <li>Supabase</li>
-              <li>Vercel</li>
-              <li>SQL</li>
-              <li>GitHub</li>
+            <li>Application Design</li>
+            <li>Database Design</li>
+            <li>SQL</li>
+            <li>Access and Approval Controls</li>
+            <li>Change Management</li>
+            <li>Requirements Gathering</li>
           </ul>
         </section>
 

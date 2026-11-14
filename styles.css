@@ -1397,3 +1397,64 @@ button:focus-visible,
     word-break: break-all;
   }
 }
+
+
+/* ----- Case study: approach timeline, lens callout, checklist ----- */
+.cs-steps { counter-reset: step; position: relative; margin-left: 16px; border-left: 1px solid var(--border); }
+.cs-steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 0 0 26px 38px;
+  font-size: 0.98rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
+.cs-steps li:last-child { padding-bottom: 4px; }
+.cs-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: -17px; top: -2px;
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  background: var(--white);
+  border: 1.5px solid var(--accent-dark);
+  border-radius: 50%;
+}
+.cs-steps strong { color: var(--ink); font-weight: 700; }
+
+.cs-section .cs-table-wrap { margin-top: 4px; }
+.cs-figure .cs-table-wrap + .cs-check,
+.cs-figure .cs-layer--controls,
+.cs-figure .cs-arch + .cs-layer { margin-top: 16px; }
+.cs-figure .cs-layer--controls + .cs-table-wrap { margin-top: 16px; }
+.cs-figure { margin-top: 8px; }
+
+.cs-check { display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; background: var(--white); border: 1px solid var(--border); border-radius: 10px; }
+.cs-check li { position: relative; padding-left: 30px; font-size: 0.92rem; color: var(--ink-mid); line-height: 1.55; }
+.cs-check li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 3px;
+  width: 16px; height: 16px;
+  border: 1.5px solid var(--accent-dark);
+  border-radius: 4px;
+}
+
+.cs-section.cs-lens {
+  padding: 28px 30px;
+  margin-top: 40px;
+  background: var(--accent-bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-dark);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.cs-section.cs-lens h2 { font-size: 1.25rem; margin-bottom: 10px; }
+.cs-section.cs-lens p { color: var(--ink); }
+
+@media (max-width: 480px) {
+  .cs-steps li { padding-left: 32px; }
+  .cs-section.cs-lens { padding: 22px 20px; }
+}

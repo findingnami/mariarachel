@@ -53,10 +53,10 @@
         <h1 class="cs-title">User Access Management Review</h1>
         <p class="cs-summary">Reviewing user roles, permissions, and access removal across internal commission, project management, and CRM applications, and building safeguards to keep access appropriate.</p>
         <dl class="cs-facts">
-        <div class="cs-fact"><dt>Focus area</dt><dd>User access and permissions</dd></div>
-        <div class="cs-fact"><dt>Context</dt><dd>Three internal business applications at a technology advisory firm</dd></div>
-        <div class="cs-fact"><dt>Tools</dt><dd>Supabase · Role-based access · Two-factor authentication · Activity logs</dd></div>
-        <div class="cs-fact"><dt>Role</dt><dd>Operations Intelligence Manager</dd></div>
+          <div class="cs-fact"><dt>Focus</dt><dd>Logical access</dd></div>
+          <div class="cs-fact"><dt>Context</dt><dd>Three internal business applications</dd></div>
+          <div class="cs-fact"><dt>Tools</dt><dd>Supabase, Vercel</dd></div>
+          <div class="cs-fact"><dt>Role</dt><dd>Operations Intelligence Manager</dd></div>
         </dl>
       </div>
     </header>
@@ -66,72 +66,87 @@
 
         <section class="cs-section" aria-labelledby="h-overview">
           <h2 id="h-overview">Overview</h2>
-          <p>At a technology advisory firm, I reviewed who had access to what across three internal business applications: commission tracking, project management, and CRM. The aim was to make sure access matched each person&#x27;s role and was removed when it was no longer needed.</p>
+          <p>At a technology advisory firm, I review who has access to what across three internal business applications: commission tracking, project management, and CRM. The aim is to make sure access matches each person&#x27;s role and is removed when it is no longer needed.</p>
         </section>
 
         <section class="cs-section" aria-labelledby="h-risk">
           <h2 id="h-risk">Risk &amp; objective</h2>
-          <p>Internal applications hold contract, commission, and client information. Excess permissions, or accounts that stay active after a role change or departure, create risk of unauthorized viewing or changes. The objective was to keep access limited to what each role needs and to catch access that should be removed.</p>
+          <p>Internal applications hold contract, commission, and client information. Excess permissions, or accounts that stay active after someone changes role or leaves, create the risk of unauthorized viewing or changes, and make it harder to trust the records. The objective is to keep access limited to what each role needs, to catch access that should be removed, and to keep a trail of what users do.</p>
         </section>
 
-        <section class="cs-section" aria-labelledby="h-did">
-          <h2 id="h-did">What I did</h2>
-          <ul class="tl-list">
-              <li>Reviewed user roles and permissions across the commission, project management, and CRM applications.</li>
-              <li>Checked that access was removed when it was no longer needed.</li>
-              <li>Applied role-based access so that each role sees and changes only what it needs.</li>
-              <li>Added data restrictions to limit what each role can see or change.</li>
-              <li>Enabled two-factor authentication for application sign-in.</li>
-              <li>Used activity logs to keep a record of user actions.</li>
-          </ul>
+        <section class="cs-section" aria-labelledby="h-approach">
+          <h2 id="h-approach">Approach</h2>
+          <ol class="cs-steps">
+            <li><strong>Define the scope.</strong> List the applications in the review: commission tracking, project management, and CRM.</li>
+            <li><strong>List users and roles.</strong> Record who has an account in each application and which role they hold.</li>
+            <li><strong>Compare access to need.</strong> Check that each role&#x27;s permissions match what that role needs to do its job.</li>
+            <li><strong>Identify access to change.</strong> Flag accounts or permissions that are no longer needed.</li>
+            <li><strong>Remove or adjust, then confirm.</strong> Apply the change and check that the access is actually gone.</li>
+            <li><strong>Build in safeguards.</strong> Set up role-based access, data restrictions, two-factor authentication, and activity logs so that access stays appropriate between reviews.</li>
+          </ol>
         </section>
 
         <section class="cs-section" aria-labelledby="h-controls">
-          <h2 id="h-controls">Controls in place</h2>
-          <ul class="tag-list">
-              <li>Role-based access</li>
-              <li>Data restrictions</li>
-              <li>Two-factor authentication</li>
-              <li>Activity logs</li>
-              <li>Access removal review</li>
+          <h2 id="h-controls">Controls</h2>
+          <div class="cs-table-wrap" role="region" aria-label="Controls, the risk each addresses, and the evidence" tabindex="0">
+            <table class="cs-table">
+              <thead><tr><th scope="col">Control</th><th scope="col">Risk it addresses</th><th scope="col">Evidence</th></tr></thead>
+              <tbody>
+              <tr><th scope="row">Role-based access</th><td>Users holding more access than their role needs</td><td>Defined roles with permissions per role</td></tr>
+              <tr><th scope="row">Data restrictions</th><td>Viewing or changing records outside one&#x27;s role</td><td>Restrictions on records by role</td></tr>
+              <tr><th scope="row">Two-factor authentication</th><td>Account takeover through a stolen or guessed password</td><td>Two-factor sign-in enabled</td></tr>
+              <tr><th scope="row">Activity logs</th><td>Changes that cannot be traced to a user</td><td>Log of user actions</td></tr>
+              <tr><th scope="row">Access removal review</th><td>Leftover access after a role change or departure</td><td>Review of roles and removals</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="cs-section" aria-labelledby="h-art">
+          <h2 id="h-art">Access review matrix and checklist</h2>
+          <figure class="cs-figure">
+            <span class="cs-illus">Illustrative — fictional sample data</span>
+          <div class="cs-table-wrap" role="region" aria-label="Illustrative access review matrix" tabindex="0">
+            <table class="cs-table">
+              <thead><tr><th scope="col">Role</th><th scope="col">Commission app</th><th scope="col">Project app</th><th scope="col">CRM</th></tr></thead>
+              <tbody>
+              <tr><th scope="row">Role 1 (Administrator)</th><td>Manage</td><td>Manage</td><td>Manage</td></tr>
+              <tr><th scope="row">Role 2 (Manager)</th><td>Approve</td><td>Edit</td><td>Edit</td></tr>
+              <tr><th scope="row">Role 3 (Analyst)</th><td>Edit</td><td>Edit</td><td>View</td></tr>
+              <tr><th scope="row">Role 4 (Viewer)</th><td>View</td><td>View</td><td>None</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="cs-check" aria-label="Illustrative access review checklist">
+            <li>Does the account belong to a current user?</li>
+            <li>Does the user's role match their current job?</li>
+            <li>Are the permissions for that role limited to what it needs?</li>
+            <li>Is two-factor authentication on?</li>
+            <li>If the user left or changed role, was access removed or changed, and was it confirmed?</li>
+            <li>Do the logs show who changed what?</li>
           </ul>
+            <figcaption>A role-by-application matrix, followed by the questions asked of each account during a review.</figcaption>
+          </figure>
         </section>
 
         <section class="cs-section" aria-labelledby="h-result">
           <h2 id="h-result">Result</h2>
-          <p>Access across the three applications is governed by defined roles, with safeguards built into the applications instead of relying on manual checks alone.</p>
+          <p>Access across the three applications is governed by defined roles, with safeguards built into the applications instead of relying on manual checks alone, and with logs that record user actions.</p>
         </section>
 
-        <section class="cs-section" aria-labelledby="h-shows">
-          <h2 id="h-shows">What this shows</h2>
-          <p>I can review access against a defined standard, build the control into the system, and keep evidence of it. These are the same steps used in user access reviews and IT general controls testing.</p>
+        <section class="cs-section cs-lens" aria-labelledby="h-lens">
+          <h2 id="h-lens">Through an audit lens</h2>
+          <p>This is the control area that IT general controls testing calls logical access: provisioning, periodic access review, removal of leavers, authentication, and logging. I have worked on both sides of it, designing the controls and checking that they operate, which is the view an auditor needs when deciding what evidence to request and how to test it.</p>
         </section>
-
-        <figure class="cs-figure">
-          <span class="cs-illus">Illustrative — fictional sample data</span>
-        <div class="cs-table-wrap" role="region" aria-label="Illustrative role and application access matrix" tabindex="0">
-          <table class="cs-table">
-            <thead><tr><th scope="col">Role</th><th scope="col">Commission</th><th scope="col">Projects</th><th scope="col">CRM</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Role 1</th><td>Approve</td><td>Edit</td><td>View</td></tr>
-              <tr><th scope="row">Role 2</th><td>Edit</td><td>Edit</td><td>None</td></tr>
-              <tr><th scope="row">Role 3</th><td>View</td><td>Approve</td><td>Edit</td></tr>
-              <tr><th scope="row">Role 4</th><td>None</td><td>View</td><td>View</td></tr>
-            </tbody>
-          </table>
-        </div>
-          <figcaption>A role-by-application matrix shows the level of access each role holds in each application: View, Edit, Approve, or None.</figcaption>
-        </figure>
 
         <section class="cs-section" aria-labelledby="h-skills">
           <h2 id="h-skills">Skills demonstrated</h2>
           <ul class="tag-list">
-              <li>User Access Review</li>
-              <li>Role-Based Access</li>
-              <li>Data Restrictions</li>
-              <li>Two-Factor Authentication</li>
-              <li>Activity Logs</li>
-              <li>IT General Controls</li>
+            <li>User Access Review</li>
+            <li>Role-Based Access Control</li>
+            <li>Authentication Controls</li>
+            <li>Activity Logging</li>
+            <li>Documentation</li>
           </ul>
         </section>
 
