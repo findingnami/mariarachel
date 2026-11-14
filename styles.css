@@ -1352,3 +1352,47 @@ button:focus-visible,
   .cs-pager { grid-template-columns: 1fr; }
   .cs-pager .cs-next, .cs-pager .cs-prev { grid-column: auto; text-align: left; }
 }
+
+
+/* =====================
+   PRINT
+   ===================== */
+@media print {
+  @page { margin: 16mm; }
+  html, body { background: #fff !important; color: #000; font-size: 11pt; }
+  .nav, .skip-link, #bgCanvas, .sparkle, .hero-scroll-hint, .hamburger,
+  .project-hover, .cs-crumb, .cs-back, .cs-pager, .hero-socials, .hero-actions { display: none !important; }
+
+  [data-reveal], .hero-eyebrow, .hero-name, .hero-tagline, .hero-photo, .cs-hero .container > * {
+    opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important;
+  }
+
+  .hero { min-height: 0; padding-top: 0; }
+  .hero-inner { padding: 0 0 16px; grid-template-columns: 1fr; }
+  .hero-photo { display: none; }
+  .section, .cs-main { padding: 24px 0; }
+  .section.alt, .cs-hero { background: #fff; border: none; }
+  .cs-hero { padding: 0 0 16px; }
+  .contact, .footer { background: #fff; color: #000; }
+  .contact-heading, .contact-val, .contact-key, .contact-sub, .contact-row,
+  .contact-social a, .footer-inner p, .footer-links a, .label--light { color: #000 !important; }
+
+  .project-card, .cs-section, .cs-figure, .cs-fact, .cs-list-item, .timeline-item,
+  .skill-group, .edu-item, .cs-table-wrap, .cs-layer, .cs-flow li {
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+  .project-card, .cs-figure, .cs-facts, .cs-note { box-shadow: none !important; transform: none !important; }
+  .cs-link::after { display: none; }
+  .cs-table-wrap { overflow: visible; }
+  .cs-table { min-width: 0; }
+
+  /* Show URLs for external links */
+  a[href^="http"]:not(.footer-links a)::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    font-weight: 400;
+    color: #444;
+    word-break: break-all;
+  }
+}
